@@ -15,7 +15,7 @@
   ],
   "modules": [
     {
-      "name": "Packet Tracer 7.1",
+      "name": "PT-7.1",
       "buildsystem": "simple",
       "build-commands": [
         "cp -r . /app"

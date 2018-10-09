@@ -9,11 +9,16 @@ file for flatpak building. It's easy, just follow the steps below.
 ## Clone this repo
 `$ git clone https://github.com/rpallai/flatpak-pt.git`
 
-## Install flatpak-builder
-`$ sudo dnf install flatpak-builder`
+## Install flatpak-builder and build dependencies
+```
+$ sudo dnf install flatpak-builder
+$ flatpak install flathub org.freedesktop.Sdk/x86_64/18.08
+```
+
+If the "flathub" repository is not installed yet, see [this guide](https://flatpak.org/setup/)
 
 ## Download "Packet Tracer 7.1.1 for Linux 64 bit.tar.gz"
-You can download from https://netacad.com after login. Put the file into the
+You can download from [netacad.com](https://netacad.com) after login. Put the file into the
 "flatpak-pt" folder next to the .json manifest.
 
 ## Build and install the flatpak application

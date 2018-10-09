@@ -1,0 +1,108 @@
+{
+  "app-id": "com.cisco.PacketTracer-71",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "PacketTracer7.sh",
+  "separate-locales": false,
+  "cleanup": [ "/include", "*.la", "*.a" ],
+  "finish-args": [
+    "--share=ipc",
+    "--share=network",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--filesystem=~/Packet Tracer 7.1:create"
+  ],
+  "modules": [
+    {
+      "name": "Packet Tracer 7.1",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp -r . /app"
+      ],
+      "sources": [
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "file",
+          "path": "Packet Tracer 7.1.1 for Linux 64 bit.tar.gz",
+          "sha256": "8ee064c92f2465fd79017397750f4d12c212c591d8feb1d198863e992613b3b7"
+        },
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "shell",
+          "commands": [
+            "tar -xzf 'Packet Tracer 7.1.1 for Linux 64 bit.tar.gz' || true",
+            "chmod -R u+w .",
+            "rm 'Packet Tracer 7.1.1 for Linux 64 bit.tar.gz'",
+
+            "install -d /app/share/applications",
+            "sed 's|Icon=.*|Icon=com.cisco.PacketTracer-71|; s|Exec=.*|Exec=PacketTracer7.sh|;' bin/Cisco-PacketTracer.desktop > /app/share/applications/com.cisco.PacketTracer-71.desktop",
+            "echo 'StartupWMClass=PacketTracer-71' >> /app/share/applications/com.cisco.PacketTracer-71.desktop",
+
+            "install -d /app/share/icons",
+            "cp art/app.png /app/share/icons/com.cisco.PacketTracer-71.png"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "icu4c-52",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp -r usr/local/lib/. /app/lib"
+      ],
+      "sources": [
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "archive",
+          "url": "http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-RHEL6-x64.tgz",
+          "sha256": "2a73302fa3556a113cd5e3de9c14cf6fc39e308fbe6970af6d84d723bf2c66a3",
+          "strip-components": 0
+        }
+      ]
+    },
+    {
+      "name": "libpng12",
+      "cleanup": [ "/bin", "/share" ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://download.sourceforge.net/libpng/libpng-1.2.54.tar.xz",
+          "sha256": "cf85516482780f2bc2c5b5073902f12b1519019d47bf473326c2018bdff1d272"
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp PacketTracer7.sh /app/bin/PacketTracer7.sh"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "PacketTracer7.sh",
+          "commands": [
+            "exec env HOME=\"$HOME/Packet Tracer 7.1\" PacketTracer7 \"$@\""
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pthome-for-javaws",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp packettracer-71 /app/packettracer"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "packettracer-71",
+          "commands": [
+            "exec /usr/bin/flatpak run com.cisco.PacketTracer-71 \"$@\""
+          ]
+        }
+      ]
+    }
+  ]
+}

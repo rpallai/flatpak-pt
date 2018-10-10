@@ -1,22 +1,22 @@
 {
-  "app-id": "com.cisco.PacketTracer-71",
+  "app-id": "com.cisco.PacketTracer-72",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "18.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "PacketTracer7.sh",
   "separate-locales": false,
   "cleanup": [ "/include", "*.la", "*.a" ],
-  "desktop-file-name-suffix": " 7.1.1",
+  "desktop-file-name-suffix": " 7.2",
   "finish-args": [
     "--share=ipc",
     "--share=network",
     "--socket=x11",
     "--socket=pulseaudio",
-    "--filesystem=~/Packet Tracer 7.1:create"
+    "--filesystem=~/Packet Tracer 7.2:create"
   ],
   "modules": [
     {
-      "name": "PT-7.1",
+      "name": "PT-7.2",
       "buildsystem": "simple",
       "build-commands": [
         "cp -r . /app"
@@ -25,23 +25,32 @@
         {
           "only-arches": [ "x86_64" ],
           "type": "file",
-          "path": "Packet Tracer 7.1.1 for Linux 64 bit.tar.gz",
-          "sha256": "8ee064c92f2465fd79017397750f4d12c212c591d8feb1d198863e992613b3b7"
+          "path": "Packet Tracer 7.2 for Linux 64 bit.tar.gz",
+          "sha256": "58d7041f49559e52e02ef7e36d3f44f8070412dfddc66f4d7c3268daf390bb52"
         },
         {
           "only-arches": [ "x86_64" ],
           "type": "shell",
           "commands": [
-            "tar -xzf 'Packet Tracer 7.1.1 for Linux 64 bit.tar.gz' || true",
+            "tar -xzf 'Packet Tracer 7.2 for Linux 64 bit.tar.gz' || true",
             "chmod -R u+w .",
-            "rm 'Packet Tracer 7.1.1 for Linux 64 bit.tar.gz'",
+            "rm 'Packet Tracer 7.2 for Linux 64 bit.tar.gz'",
+
+            /* cannot get down to work yet, sorry */
+            "rm -r extensions/NetacadExamPlayer",
+
+            /* ldconfig fails on these with "truncated lib" error, replaced by upstream version below */
+            "rm bin/libicu*.so*",
+
+            "mkdir lib",
+            "mv bin/*.so.* lib/",
 
             "install -d /app/share/applications",
-            "sed 's|Icon=.*|Icon=com.cisco.PacketTracer-71|; s|Exec=.*|Exec=PacketTracer7.sh|;' bin/Cisco-PacketTracer.desktop > /app/share/applications/com.cisco.PacketTracer-71.desktop",
-            "echo 'StartupWMClass=PacketTracer-71' >> /app/share/applications/com.cisco.PacketTracer-71.desktop",
+            "sed 's|Icon=.*|Icon=com.cisco.PacketTracer-72|; s|Exec=.*|Exec=PacketTracer7.sh|;' bin/Cisco-PacketTracer.desktop > /app/share/applications/com.cisco.PacketTracer-72.desktop",
+            "echo 'StartupWMClass=PacketTracer-72' >> /app/share/applications/com.cisco.PacketTracer-72.desktop",
 
             "install -d /app/share/icons/hicolor/48x48/apps",
-            "cp art/app.png /app/share/icons/hicolor/48x48/apps/com.cisco.PacketTracer-71.png"
+            "cp art/app.png /app/share/icons/hicolor/48x48/apps/com.cisco.PacketTracer-72.png"
           ]
         }
       ]
@@ -84,7 +93,7 @@
           "type": "script",
           "dest-filename": "PacketTracer7.sh",
           "commands": [
-            "exec env HOME=\"$HOME/Packet Tracer 7.1\" PacketTracer7 \"$@\""
+            "exec env HOME=\"$HOME/Packet Tracer 7.2\" PacketTracer7 \"$@\""
           ]
         }
       ]
@@ -93,14 +102,14 @@
       "name": "pthome-for-javaws",
       "buildsystem": "simple",
       "build-commands": [
-        "cp packettracer-71 /app/packettracer"
+        "cp packettracer /app/packettracer"
       ],
       "sources": [
         {
           "type": "script",
-          "dest-filename": "packettracer-71",
+          "dest-filename": "packettracer",
           "commands": [
-            "exec /usr/bin/flatpak run com.cisco.PacketTracer-71 \"$@\""
+            "exec /usr/bin/flatpak run com.cisco.PacketTracer-72 \"$@\""
           ]
         }
       ]

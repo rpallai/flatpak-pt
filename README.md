@@ -17,9 +17,16 @@ $ flatpak install flathub org.freedesktop.Sdk/x86_64/18.08
 
 If the "flathub" repository is not installed yet, see [this guide](https://flatpak.org/setup/)
 
-## Download "Packet Tracer 7.1.1 for Linux 64 bit.tar.gz"
-You can download it from [netacad.com](https://netacad.com) after login. Put the file into the
+## Download Packet Tracer
+Supported releases:
+
+- Packet Tracer 7.1.1 for Linux 64 bit.tar.gz
+- Packet Tracer 7.2 for Linux 64 bit.tar.gz
+
+You can download these from [netacad.com](https://netacad.com) after login. Put the file into the
 "flatpak-pt" folder, next to the .json manifest.
+
+Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" if you've chosen version 7.2
 
 ## Build and install the flatpak application
 ```
@@ -43,3 +50,6 @@ This extra step is required for the javaws applet used by web exams.
 `$ echo "export PT7HOME=~/.local/share/flatpak/app/com.cisco.PacketTracer-71/current/active/files" >>~/.bashrc`
 
 Log off, log in and that's all!
+
+## Notes
+- NetacadExamPlayer is not supported in 7.2

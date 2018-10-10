@@ -28,7 +28,7 @@ You can download these from [netacad.com](https://netacad.com) after login. Put 
 
 Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" if you've chosen version 7.2
 
-## Build and install the flatpak application
+## Build and install with flatpak
 ```
 $ cd flatpak-pt
 $ flatpak-builder --user --install build-dir com.cisco.PacketTracer-71.json

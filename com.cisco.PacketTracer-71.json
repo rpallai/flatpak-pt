@@ -39,8 +39,8 @@
             "sed 's|Icon=.*|Icon=com.cisco.PacketTracer-71|; s|Exec=.*|Exec=PacketTracer7.sh|;' bin/Cisco-PacketTracer.desktop > /app/share/applications/com.cisco.PacketTracer-71.desktop",
             "echo 'StartupWMClass=PacketTracer-71' >> /app/share/applications/com.cisco.PacketTracer-71.desktop",
 
-            "install -d /app/share/icons",
-            "cp art/app.png /app/share/icons/com.cisco.PacketTracer-71.png"
+            "install -d /app/share/icons/hicolor/48x48/apps",
+            "cp art/app.png /app/share/icons/hicolor/48x48/apps/com.cisco.PacketTracer-71.png"
           ]
         }
       ]

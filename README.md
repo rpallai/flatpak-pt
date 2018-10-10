@@ -1,6 +1,6 @@
-Cisco Packet Tracer Flatpak'ed
-==============================
-with Freedesktop runtime.
+Flatpak builder manifest for Cisco Packet Tracer
+================================================
+based on Freedesktop runtime.
 
 The Software License Agreement of Cisco Packet Tracer forbids the distribution
 of the software, that means, no one can supply the full package but the manifest

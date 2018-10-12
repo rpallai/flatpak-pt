@@ -1,10 +1,15 @@
-Flatpak builder manifest for Cisco Packet Tracer
+Flatpak-builder manifest for Cisco Packet Tracer
 ================================================
-based on Freedesktop runtime.
+Based on Freedesktop runtime.
 
-The Software License Agreement of Cisco Packet Tracer forbids the distribution
-of the software, that means, no one can supply the full package but the manifest
-file for flatpak building. It's easy, just follow the steps below.
+The Software License Agreement of Cisco Packet Tracer forbids the third party
+distribution of the software. Which means that public flatpak repositories
+cannot provide this app for you. But don't worry, this repo helps you to
+build the flatpak package for yourself from scratch.
+Flatpak-building is a distro-independent and simple process, just follow the
+steps below.
+
+Let's do it!
 
 ## Clone this repo
 `$ git clone https://github.com/rpallai/flatpak-pt.git`
@@ -14,8 +19,8 @@ file for flatpak building. It's easy, just follow the steps below.
 $ sudo dnf install flatpak-builder
 $ flatpak install flathub org.freedesktop.Sdk/x86_64/18.08
 ```
-
-If the "flathub" repository is not installed yet, see [this guide](https://flatpak.org/setup/)
+DNF is for Fedora, you might want to use 'apt-get' here.
+If the "flathub" repository is not installed yet, see [this guide](https://flatpak.org/setup/).
 
 ## Download Packet Tracer
 Supported releases:
@@ -44,8 +49,9 @@ Pruning cache
 
 Now you can run the app from the Application Launcher, just search for "cisco".
 
-## Set the "PT7HOME" enviroment variable
-This extra step is required for the javaws applet used by web exams.
+## Set the "PT7HOME" environment variable
+This step is required for ptaplayer which is a javaws applet used by web assessments.
+The applet works pretty well with different versions/spins of Java.
 
 `$ echo "export PT7HOME=~/.local/share/flatpak/app/com.cisco.PacketTracer-71/current/active/files" >>~/.bashrc`
 

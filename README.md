@@ -39,15 +39,7 @@ $ cd flatpak-pt
 $ flatpak-builder --user --install build-dir com.cisco.PacketTracer-71.json
 ```
 
-The build ends with the following lines if everything went well:
-```
-Installing for user: com.cisco.PacketTracer-71/x86_64/master from com.cisco.PacketTracer-71-origin
-[####################] 2 metadata, 1 content objects imported
-Now at e97c4c055a16.
-Pruning cache
-```
-
-Now you can run the app from the Application Launcher, just search for "cisco".
+Now you can run the app if the build succeeded. Use your application launcher as usual.
 
 ## Set the "PT7HOME" environment variable
 This step is required for ptaplayer which is a javaws applet used by web assessments.

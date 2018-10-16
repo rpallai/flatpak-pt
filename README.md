@@ -6,7 +6,7 @@ The Software License Agreement of Cisco Packet Tracer forbids the third party
 distribution of the software. Which means that public flatpak repositories
 cannot provide this app for you. But don't worry, this repo helps you to
 build the flatpak package for yourself from scratch.
-Flatpak-building is a distro-independent and simple process, just follow the
+Flatpak-building is a simple, distro-independent process, just follow the
 steps below.
 
 Let's do it!
@@ -17,7 +17,7 @@ Let's do it!
 ## Install flatpak-builder and build dependencies
 ```
 $ sudo dnf install flatpak-builder
-$ flatpak install flathub org.freedesktop.Sdk/x86_64/18.08
+$ flatpak install flathub org.freedesktop.Platform/x86_64/18.08 org.freedesktop.Sdk/x86_64/18.08
 ```
 DNF is for Fedora, you might want to use 'apt-get' here.
 If the "flathub" repository is not installed yet, see [this guide](https://flatpak.org/setup/).
@@ -28,18 +28,19 @@ Supported releases:
 - Packet Tracer 7.1.1 for Linux 64 bit.tar.gz
 - Packet Tracer 7.2 for Linux 64 bit.tar.gz
 
-You can download these from [netacad.com](https://netacad.com) after login. Put the file into the
-"flatpak-pt" folder, next to the .json manifest.
+You can download these from [netacad.com](https://netacad.com) after login. Put that file into the
+"flatpak-pt" folder, next to the .json manifest. Do not unpack the archive.
 
-Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" if you've chosen version 7.2
+Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" if you've chosen version 7.2.
 
 ## Build and install with flatpak
 ```
-$ cd flatpak-pt
-$ flatpak-builder --user --install build-dir com.cisco.PacketTracer-71.json
+$ cd flatpak-pt && flatpak-builder --delete-build-dirs --force-clean --user --install build-dir com.cisco.PacketTracer-71.json
 ```
 
 Now you can run the app if the build succeeded. Use your application launcher as usual.
+
+Do not move the newly created "./.flatpak-builder" directory while the package is installed.
 
 ## Set the "PT7HOME" environment variable
 This step is required for ptaplayer which is a javaws applet used by web assessments.

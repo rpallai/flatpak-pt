@@ -3,7 +3,7 @@ Flatpak-builder manifest for Cisco Packet Tracer
 Based on Freedesktop runtime.
 
 The Software License Agreement of Cisco Packet Tracer forbids the third party
-distribution of the software. Which means that public flatpak repositories
+distribution of the software. This means that public flatpak repositories
 cannot provide this app for you. But don't worry, this repo helps you to
 build the flatpak package for yourself from scratch.
 Flatpak-building is a simple, distro-independent process, just follow the

@@ -17,6 +17,7 @@ Let's do it!
 ## Install flatpak-builder and build dependencies
 ```
 $ sudo dnf install flatpak-builder
+$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 $ flatpak install flathub org.freedesktop.Platform/x86_64/18.08 org.freedesktop.Sdk/x86_64/18.08
 ```
 DNF is for Fedora, you might want to use 'apt-get' here.

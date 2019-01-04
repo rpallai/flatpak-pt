@@ -27,11 +27,12 @@ Supported releases:
 
 - Packet Tracer 7.1.1 for Linux 64 bit.tar.gz
 - Packet Tracer 7.2 for Linux 64 bit.tar.gz
+- Packet Tracer 7.2.1 for Linux 64 bit.tar.gz
 
 You can download these from [netacad.com](https://netacad.com) after login. Put that file into the
 "flatpak-pt" folder, next to the .json manifest. Do not unpack the archive.
 
-Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" if you've chosen version 7.2.
+Replace "com.cisco.PacketTracer-71" below with "com.cisco.PacketTracer-72" or "com.cisco.PacketTracer-721" based on your choice.
 
 ## Build and install with flatpak
 ```

@@ -1,0 +1,118 @@
+{
+  "app-id": "com.cisco.PacketTracer-72",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "PacketTracer7.sh",
+  "separate-locales": false,
+  "cleanup": [ "/include", "*.la", "*.a" ],
+  "desktop-file-name-suffix": " 7.2",
+  "finish-args": [
+    "--share=ipc",
+    "--share=network",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--filesystem=~/Packet Tracer 7.2:create"
+  ],
+  "modules": [
+    {
+      "name": "PT-7.2",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp -r . /app"
+      ],
+      "sources": [
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "file",
+          "path": "Packet Tracer 7.2.1 for Linux 64 bit.tar.gz",
+          "sha256": "fa334416ec1868a4ce2a487fec5e45d1e330fbb61d6961f33cb2a18ecabae7db"
+        },
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "shell",
+          "commands": [
+            "tar -xzf 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz' || true",
+            "chmod -R u+w .",
+            "rm 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'",
+
+            /* cannot get down to work yet, sorry */
+            "rm -r extensions/NetacadExamPlayer",
+
+            /* ldconfig fails on these with "truncated lib" error, replaced by upstream version below */
+            "rm bin/libicu*.so*",
+
+            "mkdir lib",
+            "mv bin/*.so.* lib/",
+
+            "install -d /app/share/applications",
+            "sed 's|Icon=.*|Icon=com.cisco.PacketTracer-72|; s|Exec=.*|Exec=PacketTracer7.sh|;' bin/Cisco-PacketTracer.desktop > /app/share/applications/com.cisco.PacketTracer-72.desktop",
+            "echo 'StartupWMClass=PacketTracer-72' >> /app/share/applications/com.cisco.PacketTracer-72.desktop",
+
+            "install -d /app/share/icons/hicolor/48x48/apps",
+            "cp art/app.png /app/share/icons/hicolor/48x48/apps/com.cisco.PacketTracer-72.png"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "icu4c-52",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp -r usr/local/lib/. /app/lib"
+      ],
+      "sources": [
+        {
+          "only-arches": [ "x86_64" ],
+          "type": "archive",
+          "url": "http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-RHEL6-x64.tgz",
+          "sha256": "2a73302fa3556a113cd5e3de9c14cf6fc39e308fbe6970af6d84d723bf2c66a3",
+          "strip-components": 0
+        }
+      ]
+    },
+    {
+      "name": "libpng12",
+      "cleanup": [ "/bin", "/share" ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "http://download.sourceforge.net/libpng/libpng-1.2.54.tar.xz",
+          "sha256": "cf85516482780f2bc2c5b5073902f12b1519019d47bf473326c2018bdff1d272"
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp PacketTracer7.sh /app/bin/PacketTracer7.sh"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "PacketTracer7.sh",
+          "commands": [
+            "exec env HOME=\"$HOME/Packet Tracer 7.2\" PacketTracer7 \"$@\""
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pthome-for-javaws",
+      "buildsystem": "simple",
+      "build-commands": [
+        "cp packettracer /app/packettracer"
+      ],
+      "sources": [
+        {
+          "type": "script",
+          "dest-filename": "packettracer",
+          "commands": [
+            "exec /usr/bin/flatpak run com.cisco.PacketTracer-72 \"$@\""
+          ]
+        }
+      ]
+    }
+  ]
+}

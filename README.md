@@ -50,5 +50,7 @@ The applet works pretty well with different versions/spins of Java.
 
 Log off, log in and that's all!
 
+You can test your installation [here](https://assessment.netacad.net/check/check.html).
+
 ## Notes
 - NetacadExamPlayer is not supported in 7.2

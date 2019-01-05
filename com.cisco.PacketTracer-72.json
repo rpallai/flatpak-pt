@@ -25,16 +25,16 @@
         {
           "only-arches": [ "x86_64" ],
           "type": "file",
-          "path": "Packet Tracer 7.2 for Linux 64 bit.tar.gz",
-          "sha256": "58d7041f49559e52e02ef7e36d3f44f8070412dfddc66f4d7c3268daf390bb52"
+          "path": "Packet Tracer 7.2.1 for Linux 64 bit.tar.gz",
+          "sha256": "fa334416ec1868a4ce2a487fec5e45d1e330fbb61d6961f33cb2a18ecabae7db"
         },
         {
           "only-arches": [ "x86_64" ],
           "type": "shell",
           "commands": [
-            "tar -xzf 'Packet Tracer 7.2 for Linux 64 bit.tar.gz' || true",
+            "tar -xzf 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz' || true",
             "chmod -R u+w .",
-            "rm 'Packet Tracer 7.2 for Linux 64 bit.tar.gz'",
+            "rm 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'",
 
             /* cannot get down to work yet, sorry */
             "rm -r extensions/NetacadExamPlayer",

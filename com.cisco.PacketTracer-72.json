@@ -6,7 +6,7 @@
   "command": "PacketTracer7.sh",
   "separate-locales": false,
   "cleanup": [ "/include", "*.la", "*.a" ],
-  "desktop-file-name-suffix": " 7.2",
+  "desktop-file-name-suffix": " 7.2.x",
   "finish-args": [
     "--share=ipc",
     "--share=network",

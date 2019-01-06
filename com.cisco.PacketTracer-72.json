@@ -32,14 +32,14 @@
           "only-arches": [ "x86_64" ],
           "type": "shell",
           "commands": [
-            "tar -xzf 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz' || true",
+            "tar -xzf 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'",
             "chmod -R u+w .",
             "rm 'Packet Tracer 7.2.1 for Linux 64 bit.tar.gz'",
 
-            /* cannot get down to work yet, sorry */
+            /* patches are welcome if somebody interested in running this */
             "rm -r extensions/NetacadExamPlayer",
 
-            /* ldconfig fails on these with "truncated lib" error, replaced by upstream version below */
+            /* ldconfig fails on these with "truncated lib" error so it is replaced with upstream version below */
             "rm bin/libicu*.so*",
 
             "mkdir lib",

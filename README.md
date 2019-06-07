@@ -2,10 +2,10 @@ Flatpak-builder manifest for Cisco Packet Tracer
 ================================================
 Based on Freedesktop runtime.
 
-The Software License Agreement of Cisco Packet Tracer forbids the third party
-distribution of the software. This means that public flatpak repositories
+The Software License Agreement of Cisco Packet Tracer forbids third party
+distribution. This means that public flatpak repositories
 cannot provide this app for you. But don't worry, this repo helps you to
-build the flatpak package for yourself from scratch.
+build the flatpak package by yourself from scratch.
 Flatpak-building is a simple, distro-independent process, just follow the
 steps below.
 
@@ -44,7 +44,7 @@ Do not move the newly created "./.flatpak-builder" directory while the package i
 
 ## Set the "PT7HOME" environment variable
 This step is required for ptaplayer which is a javaws applet used by web assessments.
-The applet works pretty well with different versions/spins of Java.
+This applet works pretty well with different versions/spins of Java.
 
 `$ echo "export PT7HOME=~/.local/share/flatpak/app/com.cisco.PacketTracer-71/current/active/files" >>~/.bashrc`
 
